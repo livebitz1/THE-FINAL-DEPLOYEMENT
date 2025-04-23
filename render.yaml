@@ -2,7 +2,7 @@ services:
   - type: web
     name: ai-wallet
     env: node
-    buildCommand: npm install && npm run build
+    buildCommand: npm install --legacy-peer-deps && npm run build
     startCommand: npm start
     envVars:
       - key: NODE_ENV
@@ -12,4 +12,16 @@ services:
       - key: NEXT_PUBLIC_TWITTER_API_KEY
         sync: false
     healthCheckPath: /
-    autoDeploy: true 
+    autoDeploy: true
+    nodeVersion: 18.17.0
+    disk:
+      name: npm-cache
+      mountPath: /opt/render/project/src/.npm
+      sizeGB: 1
+    buildFilter:
+      paths:
+        - package.json
+        - package-lock.json
+        - next.config.js
+        - public/**
+        - src/** 
