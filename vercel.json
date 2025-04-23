@@ -1,16 +1,20 @@
 {
   "version": 2,
+  "buildCommand": "npm run build",
+  "installCommand": "npm install --legacy-peer-deps",
+  "framework": "nextjs",
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/node",
-      "config": {
-        "installCommand": "npm install --legacy-peer-deps",
-        "buildCommand": "echo 'Skipping build step'",
-        "includeFiles": ["**"]
-      }
+      "use": "@vercel/node"
     }
   ],
+  "functions": {
+    "api/**/*.ts": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
   "routes": [
     {
       "src": "/(.*)",
