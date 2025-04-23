@@ -1,27 +1,27 @@
 services:
   - type: web
-    name: ai-wallet
+    name: web3-ai-wallet
     env: node
-    buildCommand: npm install --legacy-peer-deps && npm run build
-    startCommand: npm start
+    plan: free
+    buildCommand: echo "skipping build step"
+    startCommand: npm run dev
+    installCommand: npm install --legacy-peer-deps
     envVars:
       - key: NODE_ENV
-        value: production
+        value: development
       - key: NEXT_PUBLIC_SOLANA_RPC_URL
-        sync: false
-      - key: NEXT_PUBLIC_TWITTER_API_KEY
-        sync: false
-    healthCheckPath: /
-    autoDeploy: true
-    nodeVersion: 18.17.0
-    disk:
-      name: npm-cache
-      mountPath: /opt/render/project/src/.npm
-      sizeGB: 1
-    buildFilter:
-      paths:
-        - package.json
-        - package-lock.json
-        - next.config.js
-        - public/**
-        - src/** 
+        value: https://mainnet.helius-rpc.com/?api-key=bc153566-8ac2-4019-9c90-e0ef5b840c07
+      - key: OPENAI_API_KEY
+        value: xai-vJ1ebEeIF6H98foKnM0VzcfSBAJR5RVk1TZagz0wilH1TXFW9eBeKgz0Xb0dVmvjsYVQDE1CwITIFWGN
+      - key: TWITTER_BEARER_TOKEN
+        value: AAAAAAAAAAAAAAAAAAAA...
+      - key: TWITTER_API_KEY
+        value: jeWrn1TG3sVG3oHCaK2D2YKvN
+      - key: TWITTER_API_SECRET
+        value: DdIjT861xFJ8PXsSALlmDpYcWCVSeuipQdeDfAWNsOhrydlU4r
+      - key: TWITTER_ACCESS_TOKEN
+        value: 1913225357341147136-uHWXJDnXjPyLQVAF2LcSHtTDABeDvo
+      - key: TWITTER_ACCESS_TOKEN_SECRET
+        value: CcCXaTC3wSlajhojP8Z7enUkWh1ejRwG11jYKb6Ggi8SI
+      - key: COINMARKETCAP_API_KEY
+        value: 91a331c0-9db0-46fb-a7ee-9fc928737cd2

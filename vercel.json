@@ -1,26 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
+  "builds": [],
   "installCommand": "npm install --legacy-peer-deps",
-  "framework": "nextjs",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node"
-    }
-  ],
-  "functions": {
-    "api/**/*.ts": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "index.js"
-    }
-  ],
+  "routes": [],
   "env": {
     "NODE_ENV": "development",
     "NEXT_PUBLIC_SOLANA_RPC_URL": "https://mainnet.helius-rpc.com/?api-key=bc153566-8ac2-4019-9c90-e0ef5b840c07",
